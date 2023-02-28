@@ -1,21 +1,12 @@
 import React from 'react'
+import Aside from '../components/Aside'
 import "./Homepage.css"
 
 function Homepage(props) {
   // props.inventory
   return (
     <div className='main--container'>
-    <aside className='aside--button-container'>
-      <button>Home</button>
-      <button>All Items</button>
-      <button>All Categories</button>
-      <button>All Available Items</button>
-      <br />
-      <button>Create New Item</button>
-      <button>Create New Category</button>
-      <button>Create New Item Instance (Copy)</button>
-    </aside>
-
+    <Aside />
     <div className="content-page">
       <p>One Stop Computer Shop</p>
       <p>We currently have the following record counts:</p>
