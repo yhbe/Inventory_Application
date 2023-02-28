@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Homepage from "../views/Homepage";
 
 const RouteSwitch = () => {
@@ -31,7 +31,8 @@ const RouteSwitch = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage inventory={inventory} />} />
+          <Route path="/" element={<Navigate to={"./Inventory_Application"}/>}/>
+          <Route path="/Inventory_Application" element={<Homepage inventory={inventory} />} />
           <Route path="/createItem" element={<Homepage />} />
         </Routes>
       </BrowserRouter>
