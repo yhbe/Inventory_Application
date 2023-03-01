@@ -8,7 +8,7 @@ function Aside() {
       <button onClick={() => navigate("../Inventory_Application/")}>
         Home
       </button>
-      <button>All Items</button>
+      <button onClick={() => navigate("../Inventory_Application/allItems")}>All Items</button>
       <button>All Categories</button>
       <button>All Available Items</button>
       <br />
