@@ -12,7 +12,7 @@ const RouteSwitch = () => {
     .then(res => res.json())
     .then(data => {
       setBackendData(data)
-      setInventoryList(createInventoryList(data.users))
+      setInventoryList(createInventoryList(data))
     })
     .catch((err) => console.log(err))
   },[])
@@ -20,20 +20,20 @@ const RouteSwitch = () => {
   const createInventoryList = (inventory) => {
     console.log(inventory)
     return inventory.map((item) => (
-      <li key={item.id}>
-        <h2>{item.title}</h2>
+      <li key={item._id}>
+        <h2>{item.name}</h2>
         <p>Price: ${item.price}</p>
         <p>{item.description}</p>
       </li>
     ));
   };
-
+  
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={"./Inventory_Application"}/>}/>
-          <Route path="/Inventory_Application" element={<Homepage inventory={inventory} />} />
+          <Route path="/Inventory_Application" element={<Homepage backendData={backendData} />} />
           <Route path="/Inventory_Application/addItem" element={<AddItemPage setInventoryList={setInventoryList}/>} />
         </Routes>
       </BrowserRouter>
