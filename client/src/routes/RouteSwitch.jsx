@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddItemPage from "../views/AddItemPage";
+import AllItemsPage from "../views/AllItemsPage";
 import Homepage from "../views/Homepage";
 
 const RouteSwitch = () => {
@@ -35,6 +36,7 @@ const RouteSwitch = () => {
           <Route path="/" element={<Navigate to={"./Inventory_Application"}/>}/>
           <Route path="/Inventory_Application" element={<Homepage backendData={backendData} />} />
           <Route path="/Inventory_Application/addItem" element={<AddItemPage setInventoryList={setInventoryList}/>} />
+          <Route path="/Inventory_Application/allItems" element={<AllItemsPage backendData={backendData} />}/>
         </Routes>
       </BrowserRouter>
     </>
