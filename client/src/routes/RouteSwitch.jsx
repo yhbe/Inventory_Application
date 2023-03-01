@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddItemPage from "../views/AddItemPage";
 import AllItemsPage from "../views/AllItemsPage";
 import Homepage from "../views/Homepage";
+import ItemPageCatalog from "../views/ItemPageCatalog";
 
 const RouteSwitch = () => {
   const [backendData, setBackendData] = React.useState(undefined)
@@ -37,6 +38,9 @@ const RouteSwitch = () => {
           <Route path="/Inventory_Application" element={<Homepage backendData={backendData} />} />
           <Route path="/Inventory_Application/addItem" element={<AddItemPage setInventoryList={setInventoryList}/>} />
           <Route path="/Inventory_Application/allItems" element={<AllItemsPage backendData={backendData} />}/>
+          <Route path="/Inventory_Application/item/:id"
+          element={<ItemPageCatalog backendData={backendData} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

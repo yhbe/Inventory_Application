@@ -1,0 +1,13 @@
+*{
+  margin: 0px;
+}
+
+.create_item_jsx_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 50px;
+  margin: 10px;
+  line-height: 2rem;
+}
