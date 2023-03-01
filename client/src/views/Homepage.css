@@ -15,6 +15,10 @@
   max-width: 200px;
 }
 
+.aside--button-container > button {
+  font-size: 1rem;
+}
+
 .content-page{
   padding: 10px;
   margin-left: 10px;

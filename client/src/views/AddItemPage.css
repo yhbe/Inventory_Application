@@ -1,0 +1,36 @@
+.main--container-addItemPage{
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+.form--addItemPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.form--addItemPage > fieldset {
+    min-width: 400px;
+}
+
+.form--addItemPage>fieldset>ul>li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-ul-addItemPage{
+    list-style: none;
+}
+
+.submit-button-form{
+    display: flex;
+    margin: auto;
+}
