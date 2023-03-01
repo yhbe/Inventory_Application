@@ -23,3 +23,7 @@
   padding: 10px;
   margin-left: 10px;
 }
+
+.all-items{
+  min-width: 250px;
+}

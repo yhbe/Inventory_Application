@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Aside from "../components/Aside";
 
 function AllItemsPage(props) {
   const [allItemJsx, setAllItemJsx] = useState(null)
@@ -18,8 +19,9 @@ function AllItemsPage(props) {
   }, [props.backendData])
 
   return (
-    <div>
-      <ul>
+    <div className='main--container'>
+      <Aside />
+      <ul className='all-items'>
         {allItemJsx && allItemJsx}
       </ul>
     </div>
