@@ -54,8 +54,13 @@ app.post("/Inventory_Application/addItem/post", async (req, res) => {
 });
 
 // Setting up a route for the server to handle GET requests to "/api"
-app.get("/api", (req,res) => {
-  res.json({"users": ["userOne", "userTwo", "userThree"]})
+app.get("/api", async (req,res) => {
+    try {
+      const items = await Item.find();
+      res.json(items);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
 })
 
 // Starting the server and listening for incoming requests on port 5000
