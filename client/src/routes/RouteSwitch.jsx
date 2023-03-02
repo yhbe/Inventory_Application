@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddItemPage from "../views/AddItemPage";
 import AllItemsPage from "../views/AllItemsPage";
 import CategoriesCatalog from "../views/CategoriesCatalog";
+import CategoryPage from "../views/CategoryPage";
 import Homepage from "../views/Homepage";
 import ItemPage from "../views/ItemPage";
 import ItemPageCatalog from "../views/ItemPageCatalog";
@@ -64,6 +65,8 @@ const RouteSwitch = () => {
             path="/Inventory_Application/catalog/categories"
             element={<CategoriesCatalog backendData={backendData} />}
           />
+          <Route path="/Inventory_Application/catalog/category/:id"
+          element={<CategoryPage backendData={backendData}/>} />
         </Routes>
       </BrowserRouter>
     </>

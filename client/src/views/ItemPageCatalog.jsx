@@ -60,7 +60,9 @@ function ItemPageCatalog(props) {
     return (
     <div className="main--container">
       <Aside />
+      <div className="slight_padding">
       {item}
+      </div>
       </div>
     );
   } else {

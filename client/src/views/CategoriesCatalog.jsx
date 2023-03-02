@@ -28,6 +28,7 @@ function CategoriesCatalog(props) {
       <>
         <button onClick={() => handleCategoryClick(item.category)} className="button_link larger">{item.category}</button>
         <br />
+        <br />
       </>
     );
   }
