@@ -15,7 +15,7 @@ function Aside() {
       <button onClick={() => navigate("../Inventory_Application/addItem")}>
         Create New Item
       </button>
-      <button>Create New Category</button>
+      <button onClick={() => navigate("../Inventory_Application/category/create")}>Create New Category</button>
       <button>Create New Item Instance (Copy)</button>
     </aside>
   );

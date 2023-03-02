@@ -5,6 +5,7 @@ import AllAvailableItems from "../views/AllAvailableItems";
 import AllItemsPage from "../views/AllItemsPage";
 import CategoriesCatalog from "../views/CategoriesCatalog";
 import CategoryPage from "../views/CategoryPage";
+import CreateCategory from "../views/CreateCategory";
 import Homepage from "../views/Homepage";
 import ItemPage from "../views/ItemPage";
 import ItemPageCatalog from "../views/ItemPageCatalog";
@@ -70,9 +71,14 @@ const RouteSwitch = () => {
             path="/Inventory_Application/catalog/category/:id"
             element={<CategoryPage backendData={backendData} />}
           />
+          <Route
+            path="/Inventory_Application/availableItems"
+            element={<AllAvailableItems backendData={backendData} />}
+          />
           <Route 
-          path="/Inventory_Application/availableItems"
-          element={<AllAvailableItems backendData={backendData}/>} />
+          path="/Inventory_Application/category/create"
+          element={<CreateCategory/>} /
+          >
         </Routes>
       </BrowserRouter>
     </>

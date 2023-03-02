@@ -57,3 +57,9 @@
 .larger {
   font-size: 1.3rem;
 }
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+}
