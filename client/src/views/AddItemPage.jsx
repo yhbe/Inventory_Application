@@ -47,9 +47,25 @@ function AddItemPage(props) {
                 required
               >
                 <option value="">Select a category</option>
-                <option value="processors">Processors</option>
-                <option value="videoCards">Video Cards</option>
-                <option value="cases">Cases</option>
+                <option value="Refrigerator">Refrigerator</option>
+                <option value="Desks">Desks</option>
+                <option value="Cabinets">Cabinets</option>
+              </select>
+            </li>
+            <li>
+              <label htmlFor="itemCondition" id="itemConditionLabel">
+                Condition:
+              </label>
+              <select
+                name="itemCondition"
+                id="itemCondition"
+                aria-labelledby="itemConditionLabel"
+                required
+              >
+                <option value="">Select condition</option>
+                <option value="New">New</option>
+                <option value="Used">Used</option>
+                <option value="Refurbished">Refurbished</option>
               </select>
             </li>
           </ul>

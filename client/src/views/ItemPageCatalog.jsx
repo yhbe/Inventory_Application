@@ -38,7 +38,7 @@ function ItemPageCatalog(props) {
         <h2>Available SKUs</h2>
         <hr />
         <p>
-          ID: <button onClick={() => handleItemIdClick(item._id)} >{item._id}</button>- condition ${item.price}
+          ID: <button onClick={() => handleItemIdClick(item._id)} >{item._id}</button> {item.condition} ${item.price}
         </p>
         <hr />
         <button>Update Item</button>

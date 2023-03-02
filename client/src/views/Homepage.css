@@ -27,3 +27,24 @@
 .all-items{
   min-width: 250px;
 }
+
+.item_page_info_container{
+  padding: 20px;
+  line-height: 2rem;
+  font-size: 1.3rem;
+}
+
+.button_link{
+  font-size: inherit;
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+}
+
+.button_link:hover{
+  cursor: pointer;
+}
+
+.smaller{
+  font-size: 1rem;
+}

@@ -31,6 +31,7 @@ const itemSchema = new mongoose.Schema({
   price: {type: Number, required: true},
   category: {type: String, required: true},
   releaseDate: {type: String, required: true},
+  condition: {type: String, required: true}
 })
 
 //Creating a mongoose model for the item schema
@@ -45,6 +46,7 @@ app.post("/Inventory_Application/addItem/post", async (req, res) => {
       price: req.body.itemPrice,
       category: req.body.itemCategory,
       releaseDate: req.body.releaseDate,
+      condition: req.body.itemCondition
     });
     const savedItem = await newItem.save();
     res.redirect("/")
