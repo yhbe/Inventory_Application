@@ -48,3 +48,11 @@
 .smaller{
   font-size: 1rem;
 }
+
+.slight_padding {
+  padding: 20px;
+}
+
+.larger {
+  font-size: 1.3rem;
+}

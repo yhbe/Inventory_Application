@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddItemPage from "../views/AddItemPage";
 import AllItemsPage from "../views/AllItemsPage";
+import CategoriesCatalog from "../views/CategoriesCatalog";
 import Homepage from "../views/Homepage";
 import ItemPage from "../views/ItemPage";
 import ItemPageCatalog from "../views/ItemPageCatalog";
@@ -35,15 +36,33 @@ const RouteSwitch = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={"./Inventory_Application"}/>}/>
-          <Route path="/Inventory_Application" element={<Homepage backendData={backendData} />} />
-          <Route path="/Inventory_Application/addItem" element={<AddItemPage setInventoryList={setInventoryList}/>} />
-          <Route path="/Inventory_Application/allItems" element={<AllItemsPage backendData={backendData} />}/>
-          <Route path="/Inventory_Application/item/:id"
-          element={<ItemPageCatalog backendData={backendData} />}
+          <Route
+            path="/"
+            element={<Navigate to={"./Inventory_Application"} />}
           />
-          <Route path="/Inventory_Application/catalog/:id"
-          element={<ItemPage backendData={backendData}/>}
+          <Route
+            path="/Inventory_Application"
+            element={<Homepage backendData={backendData} />}
+          />
+          <Route
+            path="/Inventory_Application/addItem"
+            element={<AddItemPage setInventoryList={setInventoryList} />}
+          />
+          <Route
+            path="/Inventory_Application/allItems"
+            element={<AllItemsPage backendData={backendData} />}
+          />
+          <Route
+            path="/Inventory_Application/item/:id"
+            element={<ItemPageCatalog backendData={backendData} />}
+          />
+          <Route
+            path="/Inventory_Application/catalog/:id"
+            element={<ItemPage backendData={backendData} />}
+          />
+          <Route
+            path="/Inventory_Application/catalog/categories"
+            element={<CategoriesCatalog backendData={backendData} />}
           />
         </Routes>
       </BrowserRouter>
