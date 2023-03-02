@@ -10,7 +10,7 @@ function Aside() {
       </button>
       <button onClick={() => navigate("../Inventory_Application/allItems")}>All Items</button>
       <button onClick={() => navigate("../Inventory_Application/catalog/categories")}>All Categories</button>
-      <button>All Available Items</button>
+      <button onClick={() => navigate("../Inventory_Application/availableItems")}>All Available Items</button>
       <br />
       <button onClick={() => navigate("../Inventory_Application/addItem")}>
         Create New Item

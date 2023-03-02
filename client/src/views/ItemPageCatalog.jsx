@@ -16,9 +16,9 @@ function ItemPageCatalog(props) {
   }, [props.backendData, id]);
 
   const handleCategoryClick = (category) => {
-    navigate(`../Inventory_Application/category/${category}`);
+    navigate(`../Inventory_Application/catalog/category/${category}`);
   };
-
+  
   const handleItemIdClick = (id) => {
   navigate(`../Inventory_Application/catalog/${id}`);
 };
@@ -29,7 +29,10 @@ function ItemPageCatalog(props) {
         <h1>{item.name}</h1>
         <p>
           Category:
-          <button onClick={() => handleCategoryClick(item.category)}>
+          <button
+            className="button_link"
+            onClick={() => handleCategoryClick(item.category)}
+          >
             {item.category}
           </button>
         </p>
@@ -38,7 +41,14 @@ function ItemPageCatalog(props) {
         <h2>Available SKUs</h2>
         <hr />
         <p>
-          ID: <button onClick={() => handleItemIdClick(item._id)} >{item._id}</button> {item.condition} ${item.price}
+          ID:{" "}
+          <button
+            className="button_link"
+            onClick={() => handleItemIdClick(item._id)}
+          >
+            {item._id}
+          </button>{" "}
+          {item.condition} ${item.price}
         </p>
         <hr />
         <button>Update Item</button>
