@@ -37,6 +37,14 @@ const itemSchema = new mongoose.Schema({
 //Creating a mongoose model for the item schema
 const Item = mongoose.model("Item", itemSchema)
 
+// Defining category schema for MongoDB
+const categorySchema = new mongoose.Schema({
+  category: {type: String, required: true}
+})
+
+const Category = mongoose.model("Category", categorySchema)
+
+
 //Setting up a route for the server to handle POST requests to "/api/items"
 app.post("/Inventory_Application/addItem/post", async (req, res) => {
   try {
@@ -46,16 +54,29 @@ app.post("/Inventory_Application/addItem/post", async (req, res) => {
       price: req.body.itemPrice,
       category: req.body.itemCategory,
       releaseDate: req.body.releaseDate,
-      condition: req.body.itemCondition
+      condition: req.body.itemCondition,
     });
     const savedItem = await newItem.save();
-    res.redirect("/")
+    res.redirect("/");
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Setting up a route for the server to handle GET requests to "/api"
+//Setting up a route for the server to handle POST requests to "/api/categories"
+app.post("/Inventory_Application/addCategory", async (req,res) => {
+  try {
+    const newCategory = new Category({
+      category: req.body.categoryName,
+    });
+    const savedCategory = await newCategory.save();
+    res.redirect("/");
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// Setting up a route for the server to handle GET requests to "/api" for item data
 app.get("/api", async (req,res) => {
     try {
       const items = await Item.find();
@@ -64,6 +85,17 @@ app.get("/api", async (req,res) => {
       res.status(500).json({ message: err.message });
     }
 })
+
+// Setting up a route for the server to handle GET requests to "/api/categories" for category data
+app.get("/api/categories", async (req, res) => {
+  try {
+    const categories = await Category.find();
+    res.json(categories);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 
 // Starting the server and listening for incoming requests on port 5000
 app.listen(5000, () => console.log("server started on port 5000"))

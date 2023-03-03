@@ -3,6 +3,22 @@ import Aside from "../components/Aside";
 import "./AddItemPage.css";
 
 function AddItemPage(props) {
+  const [options, setOptions] = React.useState(undefined)
+
+  React.useEffect(() => {
+    if (props.backendCategories){
+      setOptions(props.backendCategories.map((item) => createOptionJSX(item)));
+    }
+  }, [])
+
+  const createOptionJSX = (item) => {
+    return (
+      <>
+        <option value={item.category}>{item.category}</option>
+      </>
+    );
+  }
+
   return (
     <div className="main--container-addItemPage">
       <Aside />
@@ -47,9 +63,7 @@ function AddItemPage(props) {
                 required
               >
                 <option value="">Select a category</option>
-                <option value="Refrigerator">Refrigerator</option>
-                <option value="Desks">Desks</option>
-                <option value="Cabinets">Cabinets</option>
+                {options && options}
               </select>
             </li>
             <li>

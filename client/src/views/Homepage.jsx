@@ -14,21 +14,27 @@ function Homepage(props) {
       totalStock: 0,
       categoryCount: 0,
     }
+  
+    if (props.backendCategories){
+      props.backendCategories.forEach(item => {
+        categoryList.push(item.category)
+      })
+    }
+    
     if (props.backendData) {
+      categoryList.forEach(item => newState.categoryCount += 1)
+
       props.backendData.forEach((item) => {
         newState.itemCount += 1;
         if (new Date().toISOString().split("T")[0] >= item.releaseDate) {
           newState.totalStock += 1;
-        }
-        if (!categoryList.includes(item.category)) {
-          categoryList.push(item.category);
-          newState.categoryCount += 1;
         }
       });
       setItemCount(newState.itemCount);
       setTotalStock(newState.totalStock);
       setCategoryCount(newState.categoryCount);
     }
+    console.log(categoryList)
   }, [props.backendData]);
 
   return (

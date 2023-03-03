@@ -12,6 +12,7 @@ import ItemPageCatalog from "../views/ItemPageCatalog";
 
 const RouteSwitch = () => {
   const [backendData, setBackendData] = React.useState(undefined)
+  const [backendCategories, setBackendCategories] = React.useState(undefined)
   const [inventory, setInventoryList] = React.useState([])
 
   React.useEffect(() => {
@@ -22,6 +23,13 @@ const RouteSwitch = () => {
       setInventoryList(createInventoryList(data))
     })
     .catch((err) => console.log(err))
+
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setBackendCategories(data)
+      })
+      .catch((err) => console.log(err));
   },[])
 
   const createInventoryList = (inventory) => {
@@ -45,11 +53,11 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application"
-            element={<Homepage backendData={backendData} />}
+            element={<Homepage backendData={backendData} backendCategories={backendCategories}/>}
           />
           <Route
             path="/Inventory_Application/addItem"
-            element={<AddItemPage setInventoryList={setInventoryList} />}
+            element={<AddItemPage setInventoryList={setInventoryList} backendCategories={backendCategories}/>}
           />
           <Route
             path="/Inventory_Application/allItems"
@@ -65,7 +73,7 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application/catalog/categories"
-            element={<CategoriesCatalog backendData={backendData} />}
+            element={<CategoriesCatalog backendData={backendData} backendCategories={backendCategories}/>}
           />
           <Route
             path="/Inventory_Application/catalog/category/:id"

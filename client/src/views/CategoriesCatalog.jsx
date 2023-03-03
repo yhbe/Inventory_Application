@@ -10,17 +10,10 @@ function CategoriesCatalog(props) {
 
   React.useEffect(() => {
     let allCategories = []
-    props.backendData?.map(item => {
-      if (!allCategories.find(i => i.category === item.category)){
-        allCategories.push({
-          category: item.category,
-          description: item.description,
-          id: item._id
-        })
-      }
-    })
-    setIsLoading(false)
-    setCatagories(allCategories);
+    if (props.backendCategories){
+      setCatagories(props.backendCategories)
+      setIsLoading(false)
+    }
   }, [])
 
   const createCatagoriesJSX = (item) => {
