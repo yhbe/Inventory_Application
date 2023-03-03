@@ -34,7 +34,6 @@ function Homepage(props) {
       setTotalStock(newState.totalStock);
       setCategoryCount(newState.categoryCount);
     }
-    console.log(categoryList)
   }, [props.backendData]);
 
   return (

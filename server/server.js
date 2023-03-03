@@ -76,6 +76,18 @@ app.post("/Inventory_Application/addCategory", async (req,res) => {
   }
 });
 
+//setting up a route to handle item delete requests "/api/items/:id"
+app.delete("/api/items/:id", async (req, res) => {
+  try {
+    const deletedItem = await Item.findByIdAndDelete(req.params.id);
+    if (!deletedItem) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Setting up a route for the server to handle GET requests to "/api" for item data
 app.get("/api", async (req,res) => {
     try {

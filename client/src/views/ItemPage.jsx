@@ -14,6 +14,21 @@ function ItemPage(props) {
     setSelectedItem(item)
   }, [])
 
+const handleDelete = async (item) => {
+  try {
+    const response = await fetch(`/api/items/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      window.location.replace("/");
+    } else {
+      console.error(response.statusText);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
   const createSelectedItemJSX = (item) => {
     return (
       <div className="main--container">
@@ -24,7 +39,7 @@ function ItemPage(props) {
             Name:{" "}
             <button
               className="button_link"
-              onClick={() => handleItemClick(item._id)}
+              onClick={(item) => handleItemClick(item)}
             >
               {item.name}
             </button>{" "}
@@ -34,7 +49,7 @@ function ItemPage(props) {
           <hr />
           <button className='button_link smaller'>Update Item Instance</button>
           <br />
-          <button className='button_link smaller'>Delete Item Instance</button>
+          <button onClick={(item) => handleDelete(item)} className='button_link smaller'>Delete Item Instance</button>
         </div>
       </div>
     );
