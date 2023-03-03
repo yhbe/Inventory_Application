@@ -18,11 +18,11 @@ function CategoriesCatalog(props) {
 
   const createCatagoriesJSX = (item) => {
     return (
-      <>
+      <div key={item._id}>
         <button onClick={() => handleCategoryClick(item.category)} className="button_link larger">{item.category}</button>
         <br />
         <br />
-      </>
+      </div>
     );
   }
 

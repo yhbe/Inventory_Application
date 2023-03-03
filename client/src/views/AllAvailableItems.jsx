@@ -12,8 +12,6 @@ function AllAvailableItems(props) {
   React.useEffect(() => {
     const availableList = []
     props.backendData?.filter(item => {
-      console.log(new Date().toISOString().split("T")[0] >= item.releaseDate);
-      
       if (new Date().toISOString().split("T")[0] >= item.releaseDate){
         availableList.push(item)
       }
@@ -28,7 +26,7 @@ function AllAvailableItems(props) {
 
   const createItemJSX = (item) => {
     return (
-      <>
+      <div key={item._id}>
         <button
           onClick={() => handleItemClick(item._id)}
           className="button_link"
@@ -37,7 +35,7 @@ function AllAvailableItems(props) {
         </button>
         <br />
         <br />
-      </>
+      </div>
     );
   }
 

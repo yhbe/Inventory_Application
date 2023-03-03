@@ -13,9 +13,7 @@ function AddItemPage(props) {
 
   const createOptionJSX = (item) => {
     return (
-      <>
-        <option value={item.category}>{item.category}</option>
-      </>
+        <option key={item._id} value={item.category}>{item.category}</option>
     );
   }
 
