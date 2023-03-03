@@ -34,7 +34,6 @@ function ItemPageCatalog(props) {
 
   const createOtherSKUSJSX = (item) => {
     return (
-      <>
         <p key={item._id}>
           ID:
           <button
@@ -45,13 +44,12 @@ function ItemPageCatalog(props) {
           </button>
           {item.condition} ${item.price}
         </p>
-      </>
     );
   }
 
   const createItemJSX = (item) => {
     return (
-      <div className={styles.create_item_jsx_container}>
+      <div key={item._id} className={styles.create_item_jsx_container}>
         <h1>{item.name}</h1>
         <p>
           Category:

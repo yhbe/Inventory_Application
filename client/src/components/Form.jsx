@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 } from "uuid";
 import "./Form.css";
 
 function Form(props) {
@@ -47,7 +48,7 @@ function Form(props) {
           >
             <option value="">Select a category</option>
             {props.backendCategories.map((category) => (
-              <option key={category._id} value={category.category}>
+              <option key={v4()} value={category.category}>
                 {category.category}
               </option>
             ))}

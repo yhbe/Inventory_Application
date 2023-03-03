@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 } from 'uuid';
 import Aside from '../components/Aside';
 
 function CategoriesCatalog(props) {
@@ -18,7 +19,7 @@ function CategoriesCatalog(props) {
 
   const createCatagoriesJSX = (item) => {
     return (
-      <div key={item._id}>
+      <div key={v4()}>
         <button onClick={() => handleCategoryClick(item.category)} className="button_link larger">{item.category}</button>
         <br />
         <br />

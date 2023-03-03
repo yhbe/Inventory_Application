@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import Aside from "../components/Aside";
 import "./AddItemPage.css";
 
@@ -13,7 +14,7 @@ function AddItemPage(props) {
 
   const createOptionJSX = (item) => {
     return (
-        <option key={item._id} value={item.category}>{item.category}</option>
+        <option key={v4()} value={item.category}>{item.category}</option>
     );
   }
 
