@@ -6,11 +6,20 @@ import styles from "./ItemPageCatalog.module.css";
 function ItemPageCatalog(props) {
   const { id } = useParams();
   const [selectedItem, setSelectedItem] = useState(null);
+  const [otherSKUs, setOtherSKUs] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate()
   
   React.useEffect(() => {
+    let otherItemArr = []
     let item = props.backendData?.find((item) => item._id === id);
+    //looking for other SKUs
+    props.backendData?.forEach(i => {
+      if (i.name === item.name && i._id !== item._id){ 
+        otherItemArr.push(i)
+      }
+    })
+    setOtherSKUs(otherItemArr.map(item => createOtherSKUSJSX(item)));
     setSelectedItem(item);
     setIsLoading(false);
   }, [props.backendData, id]);
@@ -22,6 +31,23 @@ function ItemPageCatalog(props) {
   const handleItemIdClick = (id) => {
   navigate(`../Inventory_Application/catalog/${id}`);
 };
+
+  const createOtherSKUSJSX = (item) => {
+    return (
+      <>
+        <p key={item._id}>
+          ID:
+          <button
+            className="button_link"
+            onClick={() => handleItemIdClick(item._id)}
+          >
+            {item._id}
+          </button>
+          {item.condition} ${item.price}
+        </p>
+      </>
+    );
+  }
 
   const createItemJSX = (item) => {
     return (
@@ -50,9 +76,8 @@ function ItemPageCatalog(props) {
           </button>{" "}
           {item.condition} ${item.price}
         </p>
+        {otherSKUs ?? null}
         <hr />
-        <button>Update Item</button>
-        <button>Delete Item</button>
       </div>
     );
   };
