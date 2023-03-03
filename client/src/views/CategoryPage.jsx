@@ -25,14 +25,14 @@ function CategoryPage(props) {
 
   const createItemJSX = (item) => {
     return (
-      <>
+      <div key={item._id}>
         <br />
         <button onClick={() => handleItemIdClick(item._id)} className="button_link">
           {item.name}
         </button>
         <p>{item.description}</p>
         <br />
-      </>
+      </div>
     );
   }
 
