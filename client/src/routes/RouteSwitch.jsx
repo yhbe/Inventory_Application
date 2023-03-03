@@ -7,6 +7,7 @@ import CategoriesCatalog from "../views/CategoriesCatalog";
 import CategoryPage from "../views/CategoryPage";
 import CreateCategory from "../views/CreateCategory";
 import Homepage from "../views/Homepage";
+import ItemInstanceCreate from "../views/ItemInstanceCreate";
 import ItemPage from "../views/ItemPage";
 import ItemPageCatalog from "../views/ItemPageCatalog";
 
@@ -53,11 +54,21 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application"
-            element={<Homepage backendData={backendData} backendCategories={backendCategories}/>}
+            element={
+              <Homepage
+                backendData={backendData}
+                backendCategories={backendCategories}
+              />
+            }
           />
           <Route
             path="/Inventory_Application/addItem"
-            element={<AddItemPage setInventoryList={setInventoryList} backendCategories={backendCategories}/>}
+            element={
+              <AddItemPage
+                setInventoryList={setInventoryList}
+                backendCategories={backendCategories}
+              />
+            }
           />
           <Route
             path="/Inventory_Application/allItems"
@@ -73,7 +84,12 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application/catalog/categories"
-            element={<CategoriesCatalog backendData={backendData} backendCategories={backendCategories}/>}
+            element={
+              <CategoriesCatalog
+                backendData={backendData}
+                backendCategories={backendCategories}
+              />
+            }
           />
           <Route
             path="/Inventory_Application/catalog/category/:id"
@@ -83,10 +99,14 @@ const RouteSwitch = () => {
             path="/Inventory_Application/availableItems"
             element={<AllAvailableItems backendData={backendData} />}
           />
-          <Route 
-          path="/Inventory_Application/category/create"
-          element={<CreateCategory/>} /
-          >
+          <Route
+            path="/Inventory_Application/category/create"
+            element={<CreateCategory />}
+          />
+          <Route
+            path="/Inventory_Application/catalog/itemInstance/create"
+            element={<ItemInstanceCreate backendData={backendData} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

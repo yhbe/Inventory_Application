@@ -44,7 +44,13 @@ function AddItemPage(props) {
             </li>
             <li>
               <label htmlFor="itemPrice">Price:</label>
-              <input type="number" name="itemPrice" id="itemPrice" required />
+              <input
+                type="number"
+                name="itemPrice"
+                id="itemPrice"
+                required
+                step="1"
+              />
             </li>
             <li>
               <label htmlFor="releaseDate">Launch Date:</label>

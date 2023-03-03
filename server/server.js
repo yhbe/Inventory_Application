@@ -51,10 +51,10 @@ app.post("/Inventory_Application/addItem/post", async (req, res) => {
     const newItem = new Item({
       name: req.body.itemName,
       description: req.body.itemDescription,
+      condition: req.body.itemCondition,
       price: req.body.itemPrice,
       category: req.body.itemCategory,
       releaseDate: req.body.releaseDate,
-      condition: req.body.itemCondition,
     });
     const savedItem = await newItem.save();
     res.redirect("/");
