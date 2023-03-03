@@ -88,6 +88,32 @@ app.delete("/api/items/:id", async (req, res) => {
   }
 });
 
+
+app.put("/api/items/:id", async (req, res) => {
+  try {
+    const updatedItem = await Item.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.itemName,
+        description: req.body.itemDescription,
+        condition: req.body.itemCondition,
+        price: req.body.itemPrice,
+        category: req.body.itemCategory,
+        releaseDate: req.body.releaseDate,
+      },
+      { new: true }
+    );
+    if (!updatedItem) {
+      return res.status(404).json({ message: "Item not found" });
+    } else {
+      return res.status(200).json({message: "Item updated successfully"})
+    }
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
 // Setting up a route for the server to handle GET requests to "/api" for item data
 app.get("/api", async (req,res) => {
     try {

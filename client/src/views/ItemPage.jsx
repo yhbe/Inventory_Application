@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Aside from '../components/Aside'
+import Form from '../components/Form'
 
 function ItemPage(props) {
   const [isLoading, setIsLoading] = useState(true)
   const [selectedItem, setSelectedItem] = useState(null)
+  const [isEditing, setIsEditing] = useState(false)
   const navigate = useNavigate()
   let {id} = useParams()
   
@@ -29,17 +31,47 @@ const handleDelete = async (item) => {
   }
 };
 
+const handleSubmit = async (updatedItem) => {
+  try {
+    const formData = new URLSearchParams();
+    formData.append("itemName", updatedItem.name);
+    formData.append("itemDescription", updatedItem.description);
+    formData.append("itemCondition", updatedItem.condition);
+    formData.append("itemPrice", updatedItem.price);
+    formData.append("releaseDate", updatedItem.releaseDate);
+    formData.append("itemCategory", updatedItem.category);
+    
+    const response = await fetch(`/api/items/${updatedItem._id}`, {
+      method: "PUT",
+      body: formData.toString(),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    if (response.ok) {
+      props.refreshBackendData()
+      setIsEditing(false);
+      setSelectedItem(updatedItem);
+    } else {
+      console.error(response.statusText);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
   const createSelectedItemJSX = (item) => {
     return (
-      <div className="main--container">
-        <Aside />
+      <>
         <div className="item_page_info_container">
-        <p>ID: {item._id}</p>
+          <p>ID: {item._id}</p>
           <p>
             Name:{" "}
             <button
               className="button_link"
-              onClick={(item) => handleItemClick(item)}
+              onClick={() => handleItemClick(item._id)}
             >
               {item.name}
             </button>{" "}
@@ -47,11 +79,21 @@ const handleDelete = async (item) => {
           </p>
           <p>Condition: {item.condition}</p>
           <hr />
-          <button className='button_link smaller'>Update Item Instance</button>
+          <button
+            onClick={() => setIsEditing(true)}
+            className="button_link smaller"
+          >
+            Update Item Instance
+          </button>
           <br />
-          <button onClick={(item) => handleDelete(item)} className='button_link smaller'>Delete Item Instance</button>
+          <button
+            onClick={(item) => handleDelete(item)}
+            className="button_link smaller"
+          >
+            Delete Item Instance
+          </button>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -70,9 +112,12 @@ const handleDelete = async (item) => {
   if (selectedItem){
     const item = createSelectedItemJSX(selectedItem)
     return (
-      <>
-      {item}
-      </>
+      <div className='main--container'>
+        <Aside />
+        <div>
+        {!isEditing ? item : <Form selectedItem={selectedItem} setIsEditing={setIsEditing} handleSubmit={handleSubmit} backendCategories={props.backendCategories}/>}
+        </div>
+      </div>
     )
   } else {
     return (

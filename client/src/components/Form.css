@@ -1,0 +1,14 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.form > ul {
+  list-style: none;
+}
+
+.form-label{
+  display: flex;
+}
