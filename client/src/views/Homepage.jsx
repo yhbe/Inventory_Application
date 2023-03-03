@@ -19,11 +19,11 @@ function Homepage(props) {
       props.backendCategories.forEach(item => {
         categoryList.push(item.category)
       })
+      categoryList.forEach((item) => (newState.categoryCount += 1));
+      setCategoryCount(newState.categoryCount);
     }
     
     if (props.backendData) {
-      categoryList.forEach(item => newState.categoryCount += 1)
-
       props.backendData.forEach((item) => {
         newState.itemCount += 1;
         if (new Date().toISOString().split("T")[0] >= item.releaseDate) {
@@ -32,9 +32,8 @@ function Homepage(props) {
       });
       setItemCount(newState.itemCount);
       setTotalStock(newState.totalStock);
-      setCategoryCount(newState.categoryCount);
     }
-  }, [props.backendData]);
+  }, [props.backendData, props.backendCategories]);
 
   return (
     <div className='main--container'>
