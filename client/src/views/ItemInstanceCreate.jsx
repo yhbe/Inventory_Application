@@ -42,13 +42,16 @@ function ItemInstanceCreate(props) {
     formData.append("itemCategory", selectedItem.category);
 
     try {
-      const response = await fetch("/Inventory_Application/addItem/post", {
-        method: "POST",
-        body: formData.toString(),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await fetch(
+        "https://inventory-backend-l9qt.onrender.com/Inventory_Application/addItem/post",
+        {
+          method: "POST",
+          body: formData.toString(),
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
       if (response.redirected) {
         window.location.replace(response.url);
       }

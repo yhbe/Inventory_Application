@@ -18,9 +18,12 @@ function ItemPage(props) {
 
 const handleDelete = async (item) => {
   try {
-    const response = await fetch(`/api/items/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://inventory-backend-l9qt.onrender.com/api/items/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (response.ok) {
       window.location.replace("/");
     } else {
@@ -41,13 +44,16 @@ const handleSubmit = async (updatedItem) => {
     formData.append("releaseDate", updatedItem.releaseDate);
     formData.append("itemCategory", updatedItem.category);
     
-    const response = await fetch(`/api/items/${updatedItem._id}`, {
-      method: "PUT",
-      body: formData.toString(),
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    });
+    const response = await fetch(
+      `https://inventory-backend-l9qt.onrender.com/api/items/${updatedItem._id}`,
+      {
+        method: "PUT",
+        body: formData.toString(),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
 
     if (response.ok) {
       props.refreshBackendData()

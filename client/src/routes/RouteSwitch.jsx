@@ -17,15 +17,15 @@ const RouteSwitch = () => {
   const [inventory, setInventoryList] = React.useState([])
 
   React.useEffect(() => {
-    fetch("/api")
-    .then(res => res.json())
-    .then(data => {
-      setBackendData(data)
-      setInventoryList(createInventoryList(data))
-    })
-    .catch((err) => console.log(err))
+    fetch("https://inventory-backend-l9qt.onrender.com/api")
+      .then((res) => res.json())
+      .then((data) => {
+        setBackendData(data);
+        setInventoryList(createInventoryList(data));
+      })
+      .catch((err) => console.log(err));
 
-    fetch("/api/categories")
+    fetch("https://inventory-backend-l9qt.onrender.com/api/categories")
       .then((res) => res.json())
       .then((data) => {
         // Remove duplicates using a Set
@@ -40,7 +40,7 @@ const RouteSwitch = () => {
   },[])
   
   const refreshBackendData = () => {
-    fetch("/api")
+    fetch("https://inventory-backend-l9qt.onrender.com/api")
       .then((res) => res.json())
       .then((data) => {
         setBackendData(data);
