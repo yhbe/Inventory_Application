@@ -3,8 +3,8 @@
     "concurrently": "^7.6.0"
   },
   "scripts": {
-    "server": "cd server && npm start",
-    "client": "cd client && npm start",
-    "start": "concurrently \"npm run server\" \"npm run client\""
-  }
+  "server": "cd server && npm install && npm start",
+  "client": "cd client && npm install && npm start",
+  "start": "npm run server & npm run client"
+}
 }
