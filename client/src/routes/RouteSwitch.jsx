@@ -49,6 +49,21 @@ const RouteSwitch = () => {
       .catch((err) => console.log(err));
   }
 
+  const refreshBackendCategories = () => {
+    fetch("https://inventory-backend-l9qt.onrender.com/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        // Remove duplicates using a Set
+        const uniqueCategories = [
+          ...new Set(data.map((item) => item.category)),
+        ];
+        setBackendCategories(
+          uniqueCategories.map((category) => ({ category }))
+        );
+      })
+      .catch((err) => console.log(err));
+  }
+
   const createInventoryList = (inventory) => {
     return inventory.map((item) => (
       <li key={item._id}>
@@ -122,7 +137,7 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application/category/create"
-            element={<CreateCategory />}
+            element={<CreateCategory  refreshBackendCategories={refreshBackendCategories}/>}
           />
           <Route
             path="/Inventory_Application/catalog/itemInstance/create"

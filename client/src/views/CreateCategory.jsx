@@ -20,6 +20,7 @@ function CreateCategory(props) {
       }
     );
     if (response.ok){
+      props.refreshBackendCategories();
       navigate("/");
     }
   };
