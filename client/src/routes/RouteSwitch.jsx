@@ -95,7 +95,13 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application/catalog/:id"
-            element={<ItemPage backendData={backendData} backendCategories={backendCategories} refreshBackendData={refreshBackendData}/>}
+            element={
+              <ItemPage
+                backendData={backendData}
+                backendCategories={backendCategories}
+                refreshBackendData={refreshBackendData}
+              />
+            }
           />
           <Route
             path="/Inventory_Application/catalog/categories"

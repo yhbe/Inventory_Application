@@ -64,17 +64,16 @@ app.post("/Inventory_Application/addItem/post", async (req, res) => {
 });
 
 //Setting up a route for the server to handle POST requests to "/api/categories"
-app.post("/Inventory_Application/addCategory", async (req,res) => {
+app.post("/Inventory_Application/addCategory", async (req, res) => {
   try {
     const newCategory = new Category({
       category: req.body.categoryName,
     });
     const savedCategory = await newCategory.save();
-    res.redirect("/");
+    return res.status(201)
   } catch (err) {
     res.status(400).json({ message: err.message });
-  }
-});
+  }})
 
 //setting up a route to handle item delete requests "/api/items/:id"
 app.delete("/api/items/:id", async (req, res) => {
