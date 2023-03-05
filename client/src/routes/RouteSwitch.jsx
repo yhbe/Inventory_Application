@@ -142,7 +142,7 @@ const RouteSwitch = () => {
           />
           <Route
             path="/Inventory_Application/catalog/itemInstance/create"
-            element={<ItemInstanceCreate backendData={backendData} />}
+            element={<ItemInstanceCreate backendData={backendData} refreshBackendData={refreshBackendData}/>}
           />
         </Routes>
       </BrowserRouter>

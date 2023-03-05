@@ -52,8 +52,9 @@ function ItemInstanceCreate(props) {
           },
         }
       );
-      if (response.redirected) {
-        window.location.replace(response.url);
+      if (response.ok) {
+        props.refreshBackendData()
+        navigate("/")
       }
     } catch (err) {
       console.error(err);
