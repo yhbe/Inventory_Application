@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 } from "uuid";
 import Aside from '../components/Aside';
 
 function ItemInstanceCreate(props) {
@@ -9,10 +10,12 @@ function ItemInstanceCreate(props) {
 
   React.useEffect(() => {
     let itemList = []
-    if (props.backendData){
-      props.backendData?.map(item => {
-        itemList.push(item)
+    if (props.backendData) {
+      const itemSet = new Set()
+      props.backendData?.forEach((item) => {
+        itemSet.add(item.name)
       })
+      itemList = Array.from(itemSet)
       setIsLoading(false)
       setItemCollection(itemList)
     }
@@ -20,7 +23,7 @@ function ItemInstanceCreate(props) {
 
   const createItemOptions = (item) => {
     return (
-        <option key={item._id} value={item.name}>{item.name}</option>
+        <option key={v4()} value={item}>{item}</option>
     );
   }
 
