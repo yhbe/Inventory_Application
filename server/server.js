@@ -57,7 +57,7 @@ app.post("/Inventory_Application/addItem/post", async (req, res) => {
       releaseDate: req.body.releaseDate,
     });
     const savedItem = await newItem.save();
-    res.redirect("/");
+    return res.status(201).json({ message: "Item created successfully" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -70,7 +70,7 @@ app.post("/Inventory_Application/addCategory", async (req, res) => {
       category: req.body.categoryName,
     });
     const savedCategory = await newCategory.save();
-    return res.status(201)
+    return res.status(201).json({ message: "Category created successfully" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }})

@@ -97,6 +97,7 @@ const RouteSwitch = () => {
               <AddItemPage
                 setInventoryList={setInventoryList}
                 backendCategories={backendCategories}
+                refreshBackendData={refreshBackendData}
               />
             }
           />

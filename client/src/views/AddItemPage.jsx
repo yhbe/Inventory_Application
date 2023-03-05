@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import Aside from "../components/Aside";
 import "./AddItemPage.css";
 
 function AddItemPage(props) {
+  const navigate = useNavigate()
   const [options, setOptions] = React.useState(undefined)
 
   React.useEffect(() => {
@@ -18,12 +20,30 @@ function AddItemPage(props) {
     );
   }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new URLSearchParams(new FormData(form));
+    const response = await fetch(
+      "https://inventory-backend-l9qt.onrender.com/Inventory_Application/addItem/post",
+      {
+        method: "POST",
+        body: formData.toString(),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+    if (response.ok) {
+      props.refreshBackendData();
+      navigate("/");
+    }
+  };
+
   return (
     <div className="main--container-addItemPage">
       <Aside />
-      <form
-        action="/Inventory_Application/addItem/post"
-        method="POST"
+      <form onSubmit={handleSubmit}
         className="form--addItemPage"
       >
         <h1>Create Item</h1>
