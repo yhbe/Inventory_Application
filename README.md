@@ -1,0 +1,12 @@
+# Inventory Application
+
+This is a basic full-stack application that allows you to manage your products and stock levels. You can perform the four basic CRUD operations (Create, Read, Update, and Delete) on products, including adding new products, editing existing product information, viewing a list of all products in the inventory, filtering products by name or category, and deleting products from the inventory. This application is built using Node.js, Express.js, MongoDB, and React.
+
+## Technologies Used
+
+This Application was built using the following technologies:
+
+-   Node.js - for server-side JavaScript
+-   Express.js - a web application framework for Node.js
+-   MongoDB - a document-based NoSQL database
+-   React - a JavaScript library for building user interfaces
