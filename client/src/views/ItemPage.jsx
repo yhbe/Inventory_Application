@@ -25,6 +25,7 @@ const handleDelete = async (item) => {
       }
     );
     if (response.ok) {
+      props.refreshBackendData()
       window.location.replace("/");
     } else {
       console.error(response.statusText);
