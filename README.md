@@ -1,6 +1,6 @@
 # Inventory Application
 
-[Checkout Application here](https://inventory-app-fun1.onrender.com/Inventory_Application/)
+Visit here [Inventory Application](https://inventory-app-fun1.onrender.com/Inventory_Application/)
 
 This is a basic full-stack application that allows you to manage your products and stock levels. You can perform the four basic CRUD operations (Create, Read, Update, and Delete) on products, including adding new products, editing existing product information, viewing a list of all products in the inventory, filtering products by name or category, and deleting products from the inventory. This application is built using Node.js, Express.js, MongoDB, and React.
 
