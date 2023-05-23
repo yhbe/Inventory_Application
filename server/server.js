@@ -136,5 +136,5 @@ app.get("/api/categories", async (req, res) => {
 
 
 // Starting the server and listening for incoming requests on port 5000
-const port = process.env.PORT || 5000;
+const port = https://inventory-backend-l9qt.onrender.com
 app.listen(port, () => console.log(`Server started on port ${port}`));
